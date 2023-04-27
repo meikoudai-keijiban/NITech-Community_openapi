@@ -1,0 +1,50 @@
+id: "131664189"
+name: 田中　太郎
+department: 情報工学科メディア情報分野
+createdAt: "2023-04-25 10:09:33"
+updatedAt: "2023-04-25 10:09:33"
+postings:
+  - id: 1
+    title: "初めまして，タイトルです！"
+    author:
+      - id: "131664189"
+        name: 田中　太郎
+        department: 情報工学科メディア情報分野
+        createdAt: 2023-04-25 10:09:33
+        updatedAt: 2023-04-25 10:09:33
+    postDate: "2023-04-25 10:09:33"
+    content: "投稿のコンテントですよー"
+    comments:
+      - id: "1"
+        posting:
+          id: "131664189"
+          title: "初めまして，タイトルです！"
+          author:
+            - id: "131664189"
+              name: 田中　太郎
+              department: 情報工学科メディア情報分野
+              createdAt: 2023-04-25 10:09:33
+              updatedAt: 2023-04-25 10:09:33
+          postDate: "2023-04-25 10:09:33"
+          content: "投稿のコンテントですよー"
+          createdAt: "2023-04-25 10:09:33"
+          updatedAt: "2023-04-25 10:09:33"
+    createdAt: "2023-04-25 10:09:33"
+    updatedAt: "2023-04-25 10:09:33"
+comments:
+  - id: "1"
+    posting:
+      - id: 1
+        title: "初めまして，タイトルです！"
+        author:
+          - id: 131664189
+            name: 田中　太郎
+            department: 情報工学科メディア情報分野
+            createdAt: 2023-04-25 10:09:33
+            updatedAt: 2023-04-25 10:09:33
+        postDate: "2023-04-25 10:09:33"
+        content: "投稿のコンテントですよー"
+    postDate: "2023-04-25 10:09:33"
+    content: "よろしく，コメントです！"
+    createdAt: "2023-04-25 10:09:33"
+    updatedAt: "2023-04-25 10:09:33"

@@ -1,0 +1,24 @@
+components:
+  schemas:
+    postings:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+          title:
+            type: string
+          postDate:
+            type: string
+            format: date-time
+          content:
+            type: string
+          comments:
+            type: array
+          createdAt:
+            type: string
+            format: date-time
+          updatedAt:
+            type: string
+            format: date-time

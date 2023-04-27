@@ -1,0 +1,59 @@
+properties:
+  id:
+    type: string
+  posting:
+    properties:
+      id: 
+        type: number
+      title:
+        type: string
+      author:
+        properties:
+          id: 
+            type: string
+          name: 
+            type: string
+          department: 
+            type: string
+          createdAt:
+            type: string
+            format: date-time
+          updatedAt:
+            type: string
+            format: date-time
+      postDate:
+        type: string
+        format: date-time
+      content:
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+  author:
+    properties:
+      id: 
+        type: string
+      name: 
+        type: string
+      department: 
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+  postDate:
+    type: string
+    format: date-time
+  content:
+    type: string
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time

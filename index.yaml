@@ -1,0 +1,379 @@
+openapi: 3.0.0
+info:
+  title: Nitech-Community
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: 本番環境
+
+# security:
+#   - bearerAuth: []
+
+# components:
+#   securitySchemes:
+#     bearerAuth:
+#       type: oauth2
+#       description: Azure Active Directory (Azure AD) Bearer Token authentication.
+#       flows:
+#         authorizationCode:
+#           authorizationUrl: https://login.microsoftonline.com/46c67115-889e-4601-8e8d-6ff7e8bc6209/oauth2/v2.0/authorize
+#           tokenUrl: https://login.microsoftonline.com/46c67115-889e-4601-8e8d-6ff7e8bc6209/oauth2/v2.0/token
+#           scopes:
+#             api://0d7e6a16-80bf-421f-9816-ecaaa15a688e/Access: Read user profile
+
+tags:
+  - name: User
+  - name: Posting
+  - name: Comment
+
+paths:
+  /test_api:
+    get:
+      tags:
+        - User
+      summary: APIをテスト
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  department:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+              example: 
+                $ref: "examples/test_api.yaml"
+
+  # /profiles/{userId}:
+  #   get:
+  #     tags:
+  #       - User
+  #     summary: ユーザのプロフィールを取得
+  #     parameters:
+  #       - name: userId
+  #         in: path
+  #         schema:
+  #           type: string
+  #           example: "131664189"
+  #         description: 学生の学生番号（ユーザのID）
+  #         required: true
+  #     responses:
+  #       '200':
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #              properties:
+  #                 id:
+  #                   type: string
+  #                 name:
+  #                   type: string
+  #                 department:
+  #                   type: string
+  #                 createdAt:
+  #                   type: string
+  #                   format: Date
+  #                 updatedAt:
+  #                   type: string
+  #                   format: Date
+  #                 postings:
+  #                   type: array
+  #                   items:
+  #                     type: object
+  #                     $ref: "schemas/posting.yaml"
+  #                 comments:
+  #                   type: array
+  #                   items:
+  #                     type: object
+  #                     $ref: "schemas/comment.yaml"
+  #             # example:
+  #             #   $ref: "examples/profiles_userId.yaml"
+
+  /postings:
+    get:
+      tags:
+        - Posting
+      summary: （複数の）投稿を取得する
+      parameters:
+        - name: max_id
+          in: query
+          schema:
+            type: number
+            default: Infinity
+          description: 何番までの投稿を取得するか
+          required: false
+        - name: "n"
+          in: query
+          schema:
+            type: number
+            default: 5
+          description: 投稿を何個取得するか
+          required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  properties:
+                    id:
+                      type: number
+                    title:
+                      type: string
+                    author:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        department:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                    createdAt:
+                      type: string
+                      format: date-time
+                    updatedAt:
+                      type: string
+                      format: date-time
+              example: 
+                $ref: "examples/postings_get.yaml"
+    post:
+      tags:
+        - Posting
+      summary: 投稿する
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                properties:
+                  title: 
+                    type: string
+                  content: 
+                    type: string
+              example: 
+                title: "私はタイトルです！"
+                content: "私は内容です！"
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: number
+                  title:
+                    type: string
+                  author:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      department:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+              example:
+                $ref: "examples/postings_post.yaml"
+
+  # /postings/{postingId}:
+  #   get:
+  #     tags:
+  #       - Posting
+  #     summary: 投稿の詳細を取得する
+  #     parameters:
+  #       - name: postingId
+  #         in: query
+  #         schema:
+  #           type: number
+  #         description: 対象の投稿のID
+  #         required: true
+  #     responses:
+  #       '200':
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               properties:
+  #                 posting:
+  #                   type: object
+  #                   properties:
+  #                     id:
+  #                       type: number
+  #                     title:
+  #                       type: string
+  #                     author:
+  #                       properties:
+  #                         id: 
+  #                           type: string
+  #                         name: 
+  #                           type: string
+  #                         department: 
+  #                           type: string
+  #                         createdAt:
+  #                           type: string
+  #                           format: date-time
+  #                         updatedAt:
+  #                           type: string
+  #                           format: date-time
+  #                     postDate:
+  #                       type: string
+  #                       format: date-time
+  #                     content:
+  #                       type: string
+  #                     comments:
+  #                       type: array
+  #                       items: 
+  #                         type: object
+  #                         properties:
+  #                           id:
+  #                             type: string
+  #                           author:
+  #                             properties:
+  #                               id: 
+  #                                 type: string
+  #                               name: 
+  #                                 type: string
+  #                               department: 
+  #                                 type: string
+  #                               createdAt:
+  #                                 type: string
+  #                                 format: date-time
+  #                               updatedAt:
+  #                                 type: string
+  #                                 format: date-time
+  #                           postDate:
+  #                             type: string
+  #                             format: date-time
+  #                           content:
+  #                             type: string
+  #                           createdAt:
+  #                             type: string
+  #                             format: date-time
+  #                           updatedAt:
+  #                             type: string
+  #                             format: date-time
+  #                     createdAt:
+  #                       type: string
+  #                       format: date-time
+  #                     updatedAt:
+  #                       type: string
+  #                       format: date-time
+
+  /postings/{postingId}/comments:
+    post:
+      tags:
+        - Comment
+      summary: 投稿に対してコメントする
+      parameters:
+        - name: postingId
+          in: path
+          schema:
+            type: number
+          description: コメント先の投稿
+          example: 2
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                content:
+                  type: string
+            example:
+              content: "コメントです！"
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: number
+                  content:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  posting:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      content:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      comments:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            content:
+                              type: string
+                            createdAt:
+                              type: string
+                              format: date-time
+                            updatedAt:
+                              type: string
+                              format: date-time
+                  author:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      department:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+              example:
+                $ref: "examples/postings_postingId_comments.yaml"
+                      
