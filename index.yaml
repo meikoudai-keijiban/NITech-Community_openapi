@@ -267,6 +267,8 @@ paths:
               properties:
                 content:
                   type: string
+              required:
+                - content
             example:
               content: "コメントです！"
       responses:
