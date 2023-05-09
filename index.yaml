@@ -18,45 +18,45 @@ components:
         https://login.microsoftonline.com/{AZURE_AD_TENANT_ID}/v2.0/.well-known/openid-configuration
 
 tags:
-  - name: User
+  # - name: User
   - name: Posting
   - name: Comment
 
 paths:
-  /users/{userId}:
-    get:
-      tags:
-        - User
-      summary: ユーザの基本情報を取得
-      parameters:
-        - name: userId
-          in: path
-          schema:
-            type: string
-            example: "131664189"
-          description: 学生の学生番号（ユーザのID）
-          required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  department:
-                    type: string
-                  createdAt:
-                    type: string
-                    format: Date
-                  updatedAt:
-                    type: string
-                    format: Date
-              example:
-                $ref: "examples/profiles_userId.yaml"
+  # /users/{userId}:
+  #   get:
+  #     tags:
+  #       - User
+  #     summary: ユーザの基本情報を取得
+  #     parameters:
+  #       - name: userId
+  #         in: path
+  #         schema:
+  #           type: string
+  #           example: "131664189"
+  #         description: 学生の学生番号（ユーザのID）
+  #         required: true
+  #     responses:
+  #       "200":
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               properties:
+  #                 id:
+  #                   type: string
+  #                 name:
+  #                   type: string
+  #                 department:
+  #                   type: string
+  #                 createdAt:
+  #                   type: string
+  #                   format: Date
+  #                 updatedAt:
+  #                   type: string
+  #                   format: Date
+  #             example:
+  #               $ref: "examples/profiles_userId.yaml"
 
   /postings:
     get:
@@ -68,7 +68,6 @@ paths:
           in: query
           schema:
             type: number
-            default: Infinity
           description: 何番までの投稿を取得するか
           required: false
         - name: "n"
@@ -77,7 +76,7 @@ paths:
             type: number
             default: 5
           description: 投稿を何個取得するか
-          required: false
+          required: true
       responses:
         "200":
           description: OK
