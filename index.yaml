@@ -177,7 +177,7 @@ paths:
       summary: 投稿の詳細を取得する
       parameters:
         - name: postingId
-          in: query
+          in: path
           schema:
             type: number
           description: 対象の投稿のID
