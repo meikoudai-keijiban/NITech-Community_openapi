@@ -74,7 +74,6 @@ paths:
           in: query
           schema:
             type: number
-            default: 5
           description: 投稿を何個取得するか
           required: true
       responses:
