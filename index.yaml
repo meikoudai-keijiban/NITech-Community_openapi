@@ -128,6 +128,9 @@ paths:
                   type: string
                 content:
                   type: string
+              required:
+                - title
+                - content
             example:
               title: "私はタイトルです！"
               content: "私は内容です！"
@@ -157,6 +160,8 @@ paths:
                       updatedAt:
                         type: string
                         format: date-time
+                  content:
+                    type: string
                   createdAt:
                     type: string
                     format: date-time
@@ -226,9 +231,6 @@ paths:
                             updatedAt:
                               type: string
                               format: date-time
-                        postDate:
-                          type: string
-                          format: date-time
                         content:
                           type: string
                         createdAt:
