@@ -28,7 +28,7 @@ tags:
 
 paths:
 
-  /profiles/{userId}:
+  /users/{userId}:
     get:
       tags:
         - User
@@ -171,89 +171,89 @@ paths:
               example:
                 $ref: "examples/postings_post.yaml"
 
-  # /postings/{postingId}:
-  #   get:
-  #     tags:
-  #       - Posting
-  #     summary: 投稿の詳細を取得する
-  #     parameters:
-  #       - name: postingId
-  #         in: query
-  #         schema:
-  #           type: number
-  #         description: 対象の投稿のID
-  #         required: true
-  #     responses:
-  #       '200':
-  #         description: OK
-  #         content:
-  #           application/json:
-  #             schema:
-  #               properties:
-  #                 posting:
-  #                   type: object
-  #                   properties:
-  #                     id:
-  #                       type: number
-  #                     title:
-  #                       type: string
-  #                     author:
-  #                       properties:
-  #                         id: 
-  #                           type: string
-  #                         name: 
-  #                           type: string
-  #                         department: 
-  #                           type: string
-  #                         createdAt:
-  #                           type: string
-  #                           format: date-time
-  #                         updatedAt:
-  #                           type: string
-  #                           format: date-time
-  #                     postDate:
-  #                       type: string
-  #                       format: date-time
-  #                     content:
-  #                       type: string
-  #                     comments:
-  #                       type: array
-  #                       items: 
-  #                         type: object
-  #                         properties:
-  #                           id:
-  #                             type: string
-  #                           author:
-  #                             properties:
-  #                               id: 
-  #                                 type: string
-  #                               name: 
-  #                                 type: string
-  #                               department: 
-  #                                 type: string
-  #                               createdAt:
-  #                                 type: string
-  #                                 format: date-time
-  #                               updatedAt:
-  #                                 type: string
-  #                                 format: date-time
-  #                           postDate:
-  #                             type: string
-  #                             format: date-time
-  #                           content:
-  #                             type: string
-  #                           createdAt:
-  #                             type: string
-  #                             format: date-time
-  #                           updatedAt:
-  #                             type: string
-  #                             format: date-time
-  #                     createdAt:
-  #                       type: string
-  #                       format: date-time
-  #                     updatedAt:
-  #                       type: string
-  #                       format: date-time
+  /postings/{postingId}:
+    get:
+      tags:
+        - Posting
+      summary: 投稿の詳細を取得する
+      parameters:
+        - name: postingId
+          in: query
+          schema:
+            type: number
+          description: 対象の投稿のID
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  posting:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      title:
+                        type: string
+                      author:
+                        properties:
+                          id: 
+                            type: string
+                          name: 
+                            type: string
+                          department: 
+                            type: string
+                          createdAt:
+                            type: string
+                            format: date-time
+                          updatedAt:
+                            type: string
+                            format: date-time
+                      postDate:
+                        type: string
+                        format: date-time
+                      content:
+                        type: string
+                      comments:
+                        type: array
+                        items: 
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            author:
+                              properties:
+                                id: 
+                                  type: string
+                                name: 
+                                  type: string
+                                department: 
+                                  type: string
+                                createdAt:
+                                  type: string
+                                  format: date-time
+                                updatedAt:
+                                  type: string
+                                  format: date-time
+                            postDate:
+                              type: string
+                              format: date-time
+                            content:
+                              type: string
+                            createdAt:
+                              type: string
+                              format: date-time
+                            updatedAt:
+                              type: string
+                              format: date-time
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
 
   /postings/{postingId}/comments:
     post:
