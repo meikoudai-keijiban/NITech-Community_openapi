@@ -6,20 +6,16 @@ servers:
   - url: http://localhost:3000
     description: 本番環境
 
-# security:
-#   - bearerAuth: []
+security:
+  - openIdConnect:
+      - api://{AZURE_AD_CLIENT_ID}/Access
 
-# components:
-#   securitySchemes:
-#     bearerAuth:
-#       type: oauth2
-#       description: Azure Active Directory (Azure AD) Bearer Token authentication.
-#       flows:
-#         authorizationCode:
-#           authorizationUrl: https://login.microsoftonline.com/46c67115-889e-4601-8e8d-6ff7e8bc6209/oauth2/v2.0/authorize
-#           tokenUrl: https://login.microsoftonline.com/46c67115-889e-4601-8e8d-6ff7e8bc6209/oauth2/v2.0/token
-#           scopes:
-#             api://0d7e6a16-80bf-421f-9816-ecaaa15a688e/Access: Read user profile
+components:
+  securitySchemes:
+    openIdConnect:
+      type: openIdConnect
+      openIdConnectUrl: >-
+        https://login.microsoftonline.com/{AZURE_AD_TENANT_ID}/v2.0/.well-known/openid-configuration
 
 tags:
   - name: User
