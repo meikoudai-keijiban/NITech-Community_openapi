@@ -27,18 +27,27 @@ tags:
   - name: Comment
 
 paths:
-  /test_api:
+
+  /profiles/{userId}:
     get:
       tags:
         - User
-      summary: APIをテスト
+      summary: ユーザの基本情報を取得
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: string
+            example: "131664189"
+          description: 学生の学生番号（ユーザのID）
+          required: true
       responses:
         '200':
           description: OK
           content:
             application/json:
-              schema: 
-                properties:
+              schema:
+               properties:
                   id:
                     type: string
                   name:
@@ -47,57 +56,12 @@ paths:
                     type: string
                   createdAt:
                     type: string
-                    format: date-time
+                    format: Date
                   updatedAt:
                     type: string
-                    format: date-time
-              example: 
-                $ref: "examples/test_api.yaml"
-
-  # /profiles/{userId}:
-  #   get:
-  #     tags:
-  #       - User
-  #     summary: ユーザのプロフィールを取得
-  #     parameters:
-  #       - name: userId
-  #         in: path
-  #         schema:
-  #           type: string
-  #           example: "131664189"
-  #         description: 学生の学生番号（ユーザのID）
-  #         required: true
-  #     responses:
-  #       '200':
-  #         description: OK
-  #         content:
-  #           application/json:
-  #             schema:
-  #              properties:
-  #                 id:
-  #                   type: string
-  #                 name:
-  #                   type: string
-  #                 department:
-  #                   type: string
-  #                 createdAt:
-  #                   type: string
-  #                   format: Date
-  #                 updatedAt:
-  #                   type: string
-  #                   format: Date
-  #                 postings:
-  #                   type: array
-  #                   items:
-  #                     type: object
-  #                     $ref: "schemas/posting.yaml"
-  #                 comments:
-  #                   type: array
-  #                   items:
-  #                     type: object
-  #                     $ref: "schemas/comment.yaml"
-  #             # example:
-  #             #   $ref: "examples/profiles_userId.yaml"
+                    format: Date
+              example:
+                $ref: "examples/profiles_userId.yaml"
 
   /postings:
     get:
