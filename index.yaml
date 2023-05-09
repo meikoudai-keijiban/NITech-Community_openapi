@@ -27,7 +27,6 @@ tags:
   - name: Comment
 
 paths:
-
   /users/{userId}:
     get:
       tags:
@@ -42,12 +41,12 @@ paths:
           description: 学生の学生番号（ユーザのID）
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-               properties:
+                properties:
                   id:
                     type: string
                   name:
@@ -84,13 +83,13 @@ paths:
           description: 投稿を何個取得するか
           required: false
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
-                items: 
+                items:
                   properties:
                     id:
                       type: number
@@ -117,27 +116,27 @@ paths:
                     updatedAt:
                       type: string
                       format: date-time
-              example: 
+              example:
                 $ref: "examples/postings_get.yaml"
     post:
       tags:
         - Posting
       summary: 投稿する
       requestBody:
-          required: true
-          content:
-            application/json:
-              schema:
-                properties:
-                  title: 
-                    type: string
-                  content: 
-                    type: string
-              example: 
-                title: "私はタイトルです！"
-                content: "私は内容です！"
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+            example:
+              title: "私はタイトルです！"
+              content: "私は内容です！"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -184,63 +183,46 @@ paths:
           description: 対象の投稿のID
           required: true
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 properties:
-                  posting:
-                    type: object
+                  id:
+                    type: number
+                  title:
+                    type: string
+                  author:
                     properties:
                       id:
-                        type: number
-                      title:
                         type: string
-                      author:
-                        properties:
-                          id: 
-                            type: string
-                          name: 
-                            type: string
-                          department: 
-                            type: string
-                          createdAt:
-                            type: string
-                            format: date-time
-                          updatedAt:
-                            type: string
-                            format: date-time
-                      postDate:
+                      name:
+                        type: string
+                      department:
+                        type: string
+                      createdAt:
                         type: string
                         format: date-time
-                      content:
+                      updatedAt:
                         type: string
-                      comments:
-                        type: array
-                        items: 
-                          type: object
+                        format: date-time
+                  content:
+                    type: string
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        author:
                           properties:
                             id:
                               type: string
-                            author:
-                              properties:
-                                id: 
-                                  type: string
-                                name: 
-                                  type: string
-                                department: 
-                                  type: string
-                                createdAt:
-                                  type: string
-                                  format: date-time
-                                updatedAt:
-                                  type: string
-                                  format: date-time
-                            postDate:
+                            name:
                               type: string
-                              format: date-time
-                            content:
+                            department:
                               type: string
                             createdAt:
                               type: string
@@ -248,12 +230,25 @@ paths:
                             updatedAt:
                               type: string
                               format: date-time
-                      createdAt:
-                        type: string
-                        format: date-time
-                      updatedAt:
-                        type: string
-                        format: date-time
+                        postDate:
+                          type: string
+                          format: date-time
+                        content:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+              example:
+                $ref: "examples/posting_detail.yaml"
 
   /postings/{postingId}/comments:
     post:
@@ -279,7 +274,7 @@ paths:
             example:
               content: "コメントです！"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -340,4 +335,3 @@ paths:
                         format: date-time
               example:
                 $ref: "examples/postings_postingId_comments.yaml"
-                      

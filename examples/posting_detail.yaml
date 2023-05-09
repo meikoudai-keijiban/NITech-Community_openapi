@@ -1,0 +1,35 @@
+id: 1
+title: タイトルです．
+postDate: '2023-04-27T19:06:18.521Z'
+content: 本文です．
+createdAt: '2023-04-27T19:06:18.000Z'
+updatedAt: '2023-04-27T19:06:18.000Z'
+author:
+  id: '132114153'
+  name: ＷＥＮ　Ｃｈｅｎｈａｎｇ
+  department: 情報工学科メディア情報分野
+  createdAt: '2023-04-27T19:05:26.000Z'
+  updatedAt: '2023-04-27T19:05:26.000Z'
+comments:
+- id: 1
+  postDate: '2023-04-27T19:06:40.147Z'
+  content: コメントの本文です．
+  createdAt: '2023-04-27T19:06:40.000Z'
+  updatedAt: '2023-04-27T19:06:40.000Z'
+  author:
+    id: '132114153'
+    name: ＷＥＮ　Ｃｈｅｎｈａｎｇ
+    department: 情報工学科メディア情報分野
+    createdAt: '2023-04-27T19:05:26.000Z'
+    updatedAt: '2023-04-27T19:05:26.000Z'
+- id: 2
+  postDate: '2023-04-27T19:11:52.609Z'
+  content: コメントの本文です．
+  createdAt: '2023-04-27T19:11:52.000Z'
+  updatedAt: '2023-04-27T19:11:52.000Z'
+  author:
+    id: '132114153'
+    name: ＷＥＮ　Ｃｈｅｎｈａｎｇ
+    department: 情報工学科メディア情報分野
+    createdAt: '2023-04-27T19:05:26.000Z'
+    updatedAt: '2023-04-27T19:05:26.000Z'
