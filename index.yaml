@@ -133,42 +133,9 @@ paths:
               title: "私はタイトルです！"
               content: "私は内容です！"
       responses:
-        "201":
-          description: Created
-          content:
-            application/json:
-              schema:
-                properties:
-                  id:
-                    type: number
-                  title:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      name:
-                        type: string
-                      department:
-                        type: string
-                      createdAt:
-                        type: string
-                        format: date-time
-                      updatedAt:
-                        type: string
-                        format: date-time
-                  content:
-                    type: string
-                  createdAt:
-                    type: string
-                    format: date-time
-                  updatedAt:
-                    type: string
-                    format: date-time
-              example:
-                $ref: "examples/postings_post.yaml"
-
+        "204":
+          description: No Content
+          content: {}
   /postings/{postingId}:
     get:
       tags:
@@ -272,64 +239,6 @@ paths:
             example:
               content: "コメントです！"
       responses:
-        "201":
-          description: Created
-          content:
-            application/json:
-              schema:
-                properties:
-                  id:
-                    type: number
-                  content:
-                    type: string
-                  createdAt:
-                    type: string
-                    format: date-time
-                  updatedAt:
-                    type: string
-                    format: date-time
-                  posting:
-                    type: object
-                    properties:
-                      id:
-                        type: number
-                      content:
-                        type: string
-                      createdAt:
-                        type: string
-                        format: date-time
-                      updatedAt:
-                        type: string
-                        format: date-time
-                      comments:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: number
-                            content:
-                              type: string
-                            createdAt:
-                              type: string
-                              format: date-time
-                            updatedAt:
-                              type: string
-                              format: date-time
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      name:
-                        type: string
-                      department:
-                        type: string
-                      createdAt:
-                        type: string
-                        format: date-time
-                      updatedAt:
-                        type: string
-                        format: date-time
-              example:
-                $ref: "examples/postings_postingId_comments.yaml"
+        "204":
+          description: No Content
+          content: {}
